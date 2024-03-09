@@ -39,10 +39,14 @@ class Field:
 def parseDefinition(definition, bits = []):
     with open(definition) as df:
         d = df.readlines()
+
+        # this expects a minium of two "key: value \n" lines in the file
         for l in d:
             p = l.split(":")
+            if not len(p) > 1:
+                continue
             name = p[0].strip()
-            bitlen = p[1].strip()
+            bitlen = str(eval(p[1].strip()))
             ptypes = ["hex", "int", "bin"]
             cond = "True"
             
