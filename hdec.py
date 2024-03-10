@@ -42,8 +42,10 @@ def parseDefinition(definition, bits = []):
 
         # this expects a minium of two "key: value \n" lines in the file
         for l in d:
+            # ignore comment lines that start with #, /, " , ;  and ,
+            # ignore lines that don't have a : colon separator either
             p = l.split(":")
-            if not len(p) > 1:
+            if not len(p) > 1 or p[0][0] in ['#','/','"',';',';']:
                 continue
             name = p[0].strip()
             bitlen = str(eval(p[1].strip()))
