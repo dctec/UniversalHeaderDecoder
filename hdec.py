@@ -42,7 +42,7 @@ def parseDefinition(definition, bits = []):
 
         # this expects a minium of two "key: value \n" lines in the file
         for l in d:
-            # ignore comment lines that start with #, /, " , ;  and ,
+            # ignore comment lines that start non alphanumeric character
             # ignore lines that don't have a : colon separator either
             p = l.split(":")
             if not len(p) > 1 or not p[0][0].isalnum():
